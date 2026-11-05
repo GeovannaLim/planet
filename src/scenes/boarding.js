@@ -287,7 +287,7 @@ export async function createBoarding(stage) {
     } else {
       cam.look.set(hatchWorld.x, HATCH_Y + 0.05, hatchWorld.z);
     }
-    hud.transmit([{ k: 'b_tx1', hold: 2600 }], { from: 'PAD LEADER · CH 4' });
+    hud.transmit([{ k: 'b_tx1', hold: 2600 }], { from: t('from_pad') });
     if (!(await hud.wait(R ? 400 : 4600, ep))) return;
 
     // Hatch opens: servo, seal break, warm cabin light spills onto the arm.

@@ -1,10 +1,11 @@
-// UI strings. Mission Control radio lines stay in English in both languages
-// (as in real mission comms); the subtitle shows the translation underneath.
+// UI strings. Each language is complete on its own: radio lines, headers and
+// the text on the briefing screen are all translated. The `…s` subtitle keys
+// stay empty (kept so voice-over can later show a translation under the line).
 
 const STRINGS = {
   pt: {
     gateBy: 'BY GEØ.IA',
-    gateTagline: 'Eyes · Intelligence · Action',
+    gateTagline: 'Olhos · Inteligência · Ação',
     gateHint: 'Cerca de um minuto e meio, em primeira pessoa. Recomendado com fones de ouvido.',
     loading: 'Preparando a plataforma de lançamento',
     ready: 'Nave pronta',
@@ -18,21 +19,16 @@ const STRINGS = {
     audioOff: 'Som desligado',
     fallbackText: 'Seu navegador não conseguiu iniciar o WebGL, necessário para a introdução da missão. A plataforma continua disponível.',
 
-    scene_briefing: 'Mission Briefing',
+    scene_briefing: 'Briefing da missão',
     r_kicker: 'Etapa 1 · Centro de preparação',
     r_title: 'Transmissão recebida',
     r_text: 'A Central de Missão está transmitindo seu briefing. Confirme para seguir ao embarque.',
     r_confirm: 'Confirmar missão',
-    tx1: 'MISSION CONTROL — SIGNAL ESTABLISHED',
-    tx1s: 'Central de Missão — sinal estabelecido',
-    tx2: 'Good evening, commander. This is GEO Control.',
-    tx2s: 'Boa noite, comandante. Aqui é a Central GEO.',
-    tx3: 'Your mission: Explore planetary analogues.',
-    tx3s: 'Sua missão: explorar análogos planetários.',
-    tx4: 'Terrain on Earth that mirrors the Moon and Mars. Confirm when ready.',
-    tx4s: 'Terrenos na Terra que espelham a Lua e Marte. Confirme quando estiver pronto.',
-    tx5: 'Copy that, commander. Proceed to the vehicle.',
-    tx5s: 'Entendido, comandante. Siga para a nave.',
+    tx1: 'CENTRAL DE MISSÃO — SINAL ESTABELECIDO', tx1s: '',
+    tx2: 'Boa noite, comandante. Aqui é a Central GEO.', tx2s: '',
+    tx3: 'Sua missão: explorar análogos planetários.', tx3s: '',
+    tx4: 'Terrenos na Terra que espelham a Lua e Marte. Confirme quando estiver pronto.', tx4s: '',
+    tx5: 'Entendido, comandante. Siga para a nave.', tx5s: '',
     scene_boarding: 'Embarque',
     scene_cockpit: 'Cockpit',
     scene_launch: 'Lançamento',
@@ -40,8 +36,7 @@ const STRINGS = {
     b_kicker: 'Etapa 2 · Embarque',
     b_title: 'Escotilha aberta',
     b_board: 'Embarcar',
-    b_tx1: 'GEO-1, Pad Leader. Vehicle is ready for crew ingress.',
-    b_tx1s: 'GEO-1, aqui é o líder da plataforma. Nave pronta para o embarque.',
+    b_tx1: 'GEO-1, aqui é o líder da plataforma. Nave pronta para o embarque.', b_tx1s: '',
 
     c_kicker: 'Etapa 3 · Cockpit',
     c_title: 'Preparar a nave',
@@ -54,30 +49,40 @@ const STRINGS = {
     c_s_nav: 'Navegação',
     c_s_comms: 'Comunicação',
     c_s_arm: 'Braço de acesso',
-    c_tx1: 'GEO Control, GEO-1. Radio check.',
-    c_tx1s: 'Central GEO, aqui é a GEO-1. Teste de rádio.',
-    c_tx2: 'GEO-1, GEO Control. Loud and clear. You are go for launch.',
-    c_tx2s: 'GEO-1, aqui é a Central GEO. Recebendo bem. Liberados para lançamento.',
+    c_tx1: 'Central GEO, aqui é a GEO-1. Teste de rádio.', c_tx1s: '',
+    c_tx2: 'GEO-1, aqui é a Central GEO. Recebendo alto e claro. Liberados para lançamento.', c_tx2s: '',
 
     l_kicker: 'Etapa 4 · Lançamento',
     l_title: 'Liberado para lançamento',
     l_button: 'Lançar',
-    l_tx1: 'Commander, the launch is yours.',
-    l_tx1s: 'Comandante, o lançamento é seu.',
-    l_tx2: 'Terminal count. Ignition sequence start.',
-    l_tx2s: 'Contagem final. Início da sequência de ignição.',
-    l_tx3: 'Liftoff. We have liftoff.',
-    l_tx3s: 'Decolagem. Temos decolagem.',
-    l_tx4: 'Max Q. Vehicle is stable.',
-    l_tx4s: 'Pressão dinâmica máxima. Veículo estável.',
+    l_tx1: 'Comandante, o lançamento é seu.', l_tx1s: '',
+    l_tx2: 'Contagem final. Início da sequência de ignição.', l_tx2s: '',
+    l_tx3: 'Decolagem. Temos decolagem.', l_tx3s: '',
+    l_tx4: 'Pressão dinâmica máxima. Veículo estável.', l_tx4s: '',
 
-    e_title: 'Mission initialized',
-    e_sub: 'Your exploration begins now.',
-    e_subs: 'Sua exploração começa agora.',
+    e_title: 'Missão iniciada',
+    e_sub: 'Sua exploração começa agora.',
+    e_subs: '',
     e_enter_moon: 'Entrar na plataforma · Lua',
     e_enter_mars: 'Entrar na plataforma · Marte',
 
     countdown: 'T-menos',
+
+    from_control: 'CENTRAL GEO · CANAL 2',
+    from_pad: 'LÍDER DA PLATAFORMA · CANAL 4',
+    from_cmdr: 'GEO-1 · COMANDANTE',
+
+    scr_acquiring: 'BUSCANDO SINAL',
+    scr_control: 'CENTRAL DE MISSÃO',
+    scr_signal: '— SINAL ESTABELECIDO',
+    scr_earth: 'TERRA', scr_moon: 'LUA', scr_mars: 'MARTE',
+    scr_brief: 'BRIEFING DA MISSÃO',
+    scr_objective: 'OBJETIVO', scr_objective_v: 'ANÁLOGOS PLANETÁRIOS',
+    scr_sites: 'LOCAIS', scr_sites_v: 'TERRA · LUA · MARTE',
+    scr_crew: 'TRIPULAÇÃO', scr_crew_v: '01 · COMANDANTE',
+    scr_vehicle: 'VEÍCULO', scr_vehicle_v: 'GEO-1 · PLATAFORMA 39',
+    scr_ack: 'TRIPULAÇÃO CONFIRMOU',
+    scr_await: 'AGUARDANDO TRIPULAÇÃO',
   },
   en: {
     gateBy: 'BY GEØ.IA',
@@ -143,6 +148,22 @@ const STRINGS = {
     e_enter_mars: 'Enter the platform · Mars',
 
     countdown: 'T-minus',
+
+    from_control: 'GEO CONTROL · CH 2',
+    from_pad: 'PAD LEADER · CH 4',
+    from_cmdr: 'GEO-1 · CMDR',
+
+    scr_acquiring: 'ACQUIRING SIGNAL',
+    scr_control: 'MISSION CONTROL',
+    scr_signal: '— SIGNAL ESTABLISHED',
+    scr_earth: 'EARTH', scr_moon: 'MOON', scr_mars: 'MARS',
+    scr_brief: 'MISSION BRIEF',
+    scr_objective: 'OBJECTIVE', scr_objective_v: 'PLANETARY ANALOGUES',
+    scr_sites: 'SITES', scr_sites_v: 'EARTH · MOON · MARS',
+    scr_crew: 'CREW', scr_crew_v: '01 · COMMANDER',
+    scr_vehicle: 'VEHICLE', scr_vehicle_v: 'GEO-1 · PAD 39',
+    scr_ack: 'CREW ACKNOWLEDGED',
+    scr_await: 'AWAITING CREW ACK',
   },
 };
 

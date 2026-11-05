@@ -573,7 +573,7 @@ export function createCockpit(stage, mission) {
     await w(1400);
     S.comms = true; setAnn(3, 'ok');
     S.talking = true;
-    hud.transmit([{ k: 'c_tx1', hold: 1500 }], { from: 'GEO-1 · CMDR' })
+    hud.transmit([{ k: 'c_tx1', hold: 1500 }], { from: t('from_cmdr') })
       .then(() => hud.transmit([{ k: 'c_tx2', hold: 1900 }]))
       .then(() => { S.talking = false; });
     done(2);

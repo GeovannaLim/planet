@@ -121,15 +121,15 @@ export function createBriefing(stage) {
     if (screen.mode === 'nosignal') {
       const r = Math.random;
       for (let i = 0; i < 900; i++) { g.fillStyle = `rgba(200,210,220,${r() * 0.12})`; g.fillRect(r() * w, r() * h, 3 + r() * 30, 2); }
-      text(g, 'ACQUIRING SIGNAL', w / 2, h / 2, { size: 30, color: C.ink2, align: 'center', spacing: 8 });
+      text(g, t('scr_acquiring'), w / 2, h / 2, { size: 30, color: C.ink2, align: 'center', spacing: 8 });
       if (Math.floor(time * 2) % 2) text(g, '● ● ●', w / 2, h / 2 + 46, { size: 18, color: C.amber, align: 'center', spacing: 6 });
       screenOverlay(g, w, h, time); scr.tex.needsUpdate = true;
       return;
     }
     g.fillStyle = 'rgba(255,255,255,0.04)'; g.fillRect(0, 0, w, 64);
-    text(g, 'MISSION CONTROL', 40, 42, { size: 22, color: C.ink, spacing: 5 });
-    const mcW = g.measureText('MISSION CONTROL').width + 15 * 5;
-    text(g, '— SIGNAL ESTABLISHED', 40 + mcW + 14, 42, { size: 22, color: C.ok, spacing: 5 });
+    text(g, t('scr_control'), 40, 42, { size: 22, color: C.ink, spacing: 5 });
+    const mcW = g.measureText(t('scr_control')).width + 15 * 5;
+    text(g, t('scr_signal'), 40 + mcW + 14, 42, { size: 22, color: C.ok, spacing: 5 });
     const now = new Date(); const pad = (v) => String(v).padStart(2, '0');
     text(g, `UTC ${pad(now.getUTCHours())}:${pad(now.getUTCMinutes())}:${pad(now.getUTCSeconds())}`, w - 150, 42, { size: 20, color: C.ink2, align: 'right', spacing: 3 });
     for (let b = 0; b < 4; b++) { g.fillStyle = b < 3 + (Math.sin(time * 3) > 0) ? C.ok : C.ink3; g.fillRect(w - 120 + b * 12, 46 - b * 7, 7, 8 + b * 7); }
@@ -139,8 +139,8 @@ export function createBriefing(stage) {
     glow.addColorStop(0, 'rgba(79,140,255,0.10)'); glow.addColorStop(1, 'rgba(79,140,255,0)');
     g.fillStyle = glow; g.beginPath(); g.arc(cx, cy, Rg * 1.35, 0, Math.PI * 2); g.fill();
     wireGlobe(g, cx, cy, Rg, time * 0.25, { color: 'rgba(200,215,230,0.42)' });
-    text(g, 'EARTH', cx, cy + Rg + 40, { size: 16, color: C.ink2, align: 'center', spacing: 6 });
-    [{ name: 'MOON', x: 700, y: 190, r: 22, col: 'rgba(220,220,215,0.85)' }, { name: 'MARS', x: 720, y: 520, r: 30, col: 'rgba(214,120,80,0.85)' }].forEach((tg, k) => {
+    text(g, t('scr_earth'), cx, cy + Rg + 40, { size: 16, color: C.ink2, align: 'center', spacing: 6 });
+    [{ name: t('scr_moon'), x: 700, y: 190, r: 22, col: 'rgba(220,220,215,0.85)' }, { name: t('scr_mars'), x: 720, y: 520, r: 30, col: 'rgba(214,120,80,0.85)' }].forEach((tg, k) => {
       g.setLineDash([6, 8]); g.lineDashOffset = -time * 30;
       g.strokeStyle = 'rgba(214,170,53,0.55)'; g.lineWidth = 1.5;
       g.beginPath(); g.moveTo(cx + Rg * 0.7, cy + (k ? 60 : -60));
@@ -153,9 +153,9 @@ export function createBriefing(stage) {
 
     const x0 = 860;
     g.strokeStyle = 'rgba(255,255,255,0.10)'; g.strokeRect(x0 - 24, 100, w - x0 - 16, 470);
-    text(g, 'MISSION BRIEF', x0, 140, { size: 15, color: C.amber, spacing: 6 });
+    text(g, t('scr_brief'), x0, 140, { size: 15, color: C.amber, spacing: 6 });
     text(g, 'GEO-ANALOG-01', x0, 184, { size: 34, color: C.ink, spacing: 3 });
-    [['OBJECTIVE', 'PLANETARY ANALOGUES'], ['SITES', 'EARTH · MOON · MARS'], ['CREW', '01 · COMMANDER'], ['VEHICLE', 'GEO-1 · PAD 39']].forEach(([k, v], i) => {
+    ['objective', 'sites', 'crew', 'vehicle'].map((k) => [t('scr_' + k), t('scr_' + k + '_v')]).forEach(([k, v], i) => {
       const y = 240 + i * 62;
       text(g, k, x0, y, { size: 13, color: C.ink3, spacing: 4 });
       text(g, v, x0, y + 26, { size: 20, color: C.ink, spacing: 2 });
@@ -164,8 +164,8 @@ export function createBriefing(stage) {
     const blink = ack || Math.floor(time * 1.6) % 2;
     g.fillStyle = ack ? 'rgba(47,211,158,0.12)' : 'rgba(214,170,53,0.12)'; g.fillRect(x0 - 8, 498, w - x0 - 40, 46);
     if (blink) { g.fillStyle = ack ? C.ok : C.amber; g.beginPath(); g.arc(x0 + 10, 521, 6, 0, Math.PI * 2); g.fill(); }
-    text(g, ack ? 'CREW ACKNOWLEDGED' : 'AWAITING CREW ACK', x0 + 28, 528, { size: 18, color: ack ? C.ok : C.amber, spacing: 4 });
-    text(g, 'EYES · INTELLIGENCE · ACTION', 40, h - 28, { size: 13, color: C.ink3, spacing: 6 });
+    text(g, ack ? t('scr_ack') : t('scr_await'), x0 + 28, 528, { size: 18, color: ack ? C.ok : C.amber, spacing: 4 });
+    text(g, t('gateTagline').toUpperCase(), 40, h - 28, { size: 13, color: C.ink3, spacing: 6 });
     text(g, 'GEO.AI', w - 40, h - 28, { size: 15, color: C.ink2, align: 'right', spacing: 6 });
     screenOverlay(g, w, h, time); scr.tex.needsUpdate = true;
   }

@@ -33,7 +33,7 @@ let txSeq = 0;
  * Plays Mission Control lines one after another.
  * lines: [{ k: 'tx2' } | { text, sub }], each optionally { hold: ms, from: 'CONTROL' }
  */
-export async function transmit(lines, { from = 'GEO CONTROL · CH 2' } = {}) {
+export async function transmit(lines, { from = t('from_control') } = {}) {
   const ep = epoch; const seq = ++txSeq;
   els.tx.hidden = false;
   els.tx.innerHTML = `<div class="tx"><div class="tx-head"><span class="tx-wave"><i></i><i></i><i></i><i></i></span><span class="tx-from"></span></div><div class="tx-line"></div><div class="tx-sub"></div></div>`;
