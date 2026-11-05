@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>GEO.AI — Mission Launch</title>
+  <meta name="description" content="GEO.AI — introdução imersiva à plataforma de investigação de ambientes análogos entre Terra, Lua e Marte." />
+  <meta name="theme-color" content="#07080a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/",
+      "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- 3D stage -->
+  <canvas id="stage" aria-hidden="true"></canvas>
+
+  <!-- Cinematic overlays -->
+  <div class="fx-vignette" aria-hidden="true"></div>
+  <div class="fx-grain" aria-hidden="true"></div>
+  <div class="fx-fade" id="fade" aria-hidden="true"></div>
+  <div class="fx-flash" id="flash" aria-hidden="true"></div>
+
+  <!-- Persistent chrome -->
+  <header class="chrome" id="chrome" hidden>
+    <img class="chrome-logo" src="assets/logo-white.png" alt="GEO.AI" width="160" height="26" />
+    <div class="chrome-scene" id="scene-label" aria-live="polite"></div>
+    <div class="chrome-actions">
+      <button class="chip" id="btn-audio" type="button" aria-pressed="false">
+        <span class="chip-dot"></span><span data-i18n-label></span>
+      </button>
+      <button class="chip chip-ghost" id="btn-skip" type="button"></button>
+    </div>
+  </header>
+
+  <!-- Mission progress rail -->
+  <nav class="rail" id="rail" hidden aria-label="Mission progress"></nav>
+
+  <!-- One bottom dock: transmission text with its action panel right under it -->
+  <div class="dock" id="dock">
+    <div class="transmission" id="transmission" hidden role="log" aria-live="polite"></div>
+    <section class="panel" id="panel" hidden aria-live="polite"></section>
+  </div>
+
+  <!-- Countdown -->
+  <div class="count" id="count" hidden aria-live="assertive"></div>
+
+  <!-- Center titles -->
+  <div class="title-card" id="title-card" hidden aria-live="polite"></div>
+
+  <!-- Boot / gate -->
+  <main class="gate" id="gate">
+    <div class="gate-bg" aria-hidden="true"></div>
+    <div class="gate-lang">
+      <label class="sr-only" for="lang">Idioma / Language</label>
+      <select id="lang">
+        <option value="pt">Português</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    <div class="gate-inner">
+      <img class="gate-logo" src="assets/logo-white.png" alt="GEO.AI" width="640" height="103" />
+      <p class="gate-by" data-i18n="gateBy"></p>
+      <p class="gate-tagline" data-i18n="gateTagline"></p>
+      <div class="gate-loader" id="gate-loader">
+        <div class="gate-loader-bar"><span id="gate-loader-fill"></span></div>
+        <span class="gate-loader-text" id="gate-loader-text"></span>
+      </div>
+      <div class="gate-actions" id="gate-actions" hidden>
+        <button class="btn btn-primary" id="btn-start-audio" type="button" data-i18n="startWithAudio"></button>
+        <button class="btn btn-ghost" id="btn-start-silent" type="button" data-i18n="startSilent"></button>
+      </div>
+      <a class="gate-skip" id="gate-skip" data-i18n="skipToPlatform"></a>
+      <p class="gate-hint" data-i18n="gateHint"></p>
+    </div>
+  </main>
+
+  <!-- WebGL fallback -->
+  <main class="fallback" id="fallback" hidden>
+    <img src="assets/logo-white.png" alt="GEO.AI" width="320" height="52" />
+    <p data-i18n="fallbackText"></p>
+    <a class="btn btn-primary" id="fallback-link" data-i18n="skipToPlatform"></a>
+  </main>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
